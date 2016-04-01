@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">PracticalTest01Var07</string>
+    <string name="action_settings">Settings</string>
+    <string name="navigate_second_activity">Navigate to secondary activity</string>
+    <string name="title_activity_practical_test01_var07_secondary">
+        PracticalTest01Var07SecondaryActivity
+    </string>
+    <string name="Ok">Ok</string>
+    <string name="Cancel">Cancel</string>
+</resources>
