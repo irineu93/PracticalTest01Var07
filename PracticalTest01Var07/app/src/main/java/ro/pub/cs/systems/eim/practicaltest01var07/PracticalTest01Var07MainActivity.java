@@ -73,6 +73,13 @@ public class PracticalTest01Var07MainActivity extends AppCompatActivity {
                 startService(intent);
                 serviceStatus = true;
             }
+            else {
+                if (serviceStatus == true) {
+                    Intent intent = new Intent(getApplicationContext(), PracticalTest01Var07Service.class);
+                    stopService(intent);
+                    serviceStatus = false;
+                }
+            }
         }
     }
 
@@ -170,8 +177,15 @@ public class PracticalTest01Var07MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onDestroy() {
+        Intent intent = new Intent(this, PracticalTest01Var07Service.class);
+        stopService(intent);
+        super.onDestroy();
+    }
+
+    @Override
     protected void onSaveInstanceState(Bundle outState) {
-//        super.onSaveInstanceState(outState);
+        super.onSaveInstanceState(outState);
 
         outState.putBoolean("nameCheckBox", nameCheckBox.isChecked());
         outState.putBoolean("groupCheckBox", groupCheckBox.isChecked());
@@ -187,7 +201,7 @@ public class PracticalTest01Var07MainActivity extends AppCompatActivity {
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
-//        super.onRestoreInstanceState(savedInstanceState);
+        super.onRestoreInstanceState(savedInstanceState);
 
         if (savedInstanceState.containsKey("nameCheckBox")) {
             nameCheckBox.setChecked(savedInstanceState.getBoolean("nameCheckBox"));
